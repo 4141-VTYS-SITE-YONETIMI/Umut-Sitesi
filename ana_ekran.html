@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giriş Ekranı</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .giris-formu {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+    }
+    .butonlar {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .butonlar button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .butonlar button:focus {
+        outline: none;
+    }
+    #yonetim-giris {
+        background-color: #007bff;
+        color: #fff;
+    }
+    #sakin-giris {
+        background-color: #28a745;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="giris-formu">
+        <h1>Sitemize Hoş Geldiniz! Lütfen giriş yapınız.</h1>
+        <div class="butonlar">
+            <a href="/yönetim"><button id="yonetim-giris">Yönetim Giriş</button></a>
+            <a href="/sakin"><button id="sakin-giris">Sakin Giriş</button></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("yonetim-giris").addEventListener("click", function() {
+        // Yönetim Giriş Sayfası'nı açmak için buraya yönlendirme yapabilirsiniz
+        console.log("Yönetim Giriş Sayfası Açıldı");
+    });
+
+    document.getElementById("sakin-giris").addEventListener("click", function() {
+        // Şifre isteyen bir giriş ekranı açmak için buraya yönlendirme yapabilirsiniz
+        console.log("Şifre İsteyen Giriş Ekranı Açıldı");
+    });
+</script>
+
+</body>
+</html>

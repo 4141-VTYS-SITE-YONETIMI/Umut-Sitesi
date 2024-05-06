@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartman Yönetim Paneli</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4 text-center">Apartman Yönetim Paneli</h1>
+        <h2 class="mb-4 text-center">Hoşgeldiniz {{ isim }}</h2>
+
+        <div class="row">
+            <!-- Duyurular -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">Duyurular</div>
+                    <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">{{ duyuru[0] }}: {{ duyuru[1] }}</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ödeme Bilgileri -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-warning text-white">Ödeme Bilgileri</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ad</th>
+                                    <th scope="col">Aidat Miktarı</th>
+                                    <th scope="col">Ödeme Durumu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                    <tr>
+                                        <td>{{ odeme[0] }}</td>
+                                        <td>{{ odeme[1] }}</td>
+                                        <td>{{ odeme[2] }}</td>
+                                    </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Kullanıcı Ekle -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-info text-white">Kullanıcı Ekle</div>
+                    <div class="card-body">
+                        <form action="{{ url_for('kullanici_ekle') }}" method="post">
+                            <div class="form-group">
+                                <label for="username">Kullanıcı Adı:</label>
+                                <input type="text" class="form-control" id="username" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Şifre:</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <div class="form-group">
+                                <label for="user_type">Kullanıcı Tipi:</label>
+                                <select class="form-control" id="user_type" name="user_type">
+                                    <option value="sakin">Sakin</option>
+                                    <option value="yonetici">Yönetici</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="full_name">Tam Adı:</label>
+                                <input type="text" class="form-control" id="full_name" name="full_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-posta:</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="apartment">Oturduğu Daire:</label>
+                                <input type="text" class="form-control" id="apartment" name="apartment">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kullanıcı Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duyuru Ekle -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">Duyuru Ekle</div>
+                    <div class="card-body">
+                        <form action="{{ url_for('duyuru_ekle') }}" method="post">
+                            <div class="form-group">
+                                <label for="baslik">Başlık:</label>
+                                <input type="text" class="form-control" id="baslik" name="baslik">
+                            </div>
+                            <div class="form-group">
+                                <label for="icerik">İçerik:</label>
+                                <textarea class="form-control" id="icerik" name="icerik" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Duyuru Ekle</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">Kullanıcı Sil</div>
+                    <div class="card-body">
+                        <form action="{{ url_for('kullanici_sil') }}" method="post">
+                            <div class="form-group">
+                                <label for="kullanici_ad">Kullanıcı Adı:</label>
+                                <input type="text" class="form-control" id="kullanici_ad" name="kullanici_ad">
+                            </div>
+                            <button type="submit" class="btn btn-danger">Kullanıcı Sil</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

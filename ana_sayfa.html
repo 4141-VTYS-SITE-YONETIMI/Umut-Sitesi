@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartman Sitesi Otomasyonu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .announcement {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .announcement p {
+            margin: 0;
+        }
+        .user-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .user-info p {
+            margin: 10px 0;
+        }
+        .payment-form {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .payment-form input[type="number"] {
+            padding: 8px;
+            width: 100px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .services {
+            margin-top: 30px;
+        }
+        .services ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .services ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .services ul li:last-child {
+            margin-right: 0;
+        }
+        .services ul li span {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 20px;
+        }
+        .services ul li.completed span {
+            background-color: #28a745;
+        }
+        .services ul li.pending span {
+            background-color: #ffc107;
+        }
+        .services ul li:hover span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apartman Sitesi Otomasyonu</h1>
+        <div class="announcement">
+            <p><strong>Duyuru:</strong> {{ duyuru }}</p>
+        </div>
+        <div class="user-info">
+            <p>Sakin: {{soy}}</p>
+            <p>Daire No: {{no}}</p>
+            <p>Aidat Borcu: <span id="total-amount">{{aidat[2]}}</span>TL</p>
+            <p>Durum: {{aidat[3]}}</p>
+        </div>
+        <div class="payment-form">
+            <label for="payment-amount">{{aidat[2]}} (TL):</label>
+            <input type="number" id="payment-amount" min="1" placeholder="Miktar">
+            <button onclick="makePayment">Ödemeyi Yap</button>
+        </div>
+        <div class="services">
+            <h2>Kullanılan Hizmetler</h2>
+            <ul id="service-list">
+                <li class="completed"><span onclick="toggleService(this, 20)">Asansör Hizmeti</span></li>
+                <li class="completed"><span onclick="toggleService(this, 20)">Güvenlik Hizmeti</span></li>
+                <li class="completed"><span onclick="toggleService(this, 20)">Temizlik Hizmeti</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    function makePayment() {
+        var paymentAmount = document.getElementById("payment-amount").value;
+        var totalAmount = document.getElementById("total-amount").textContent;
+
+        if (parseInt(paymentAmount) === parseInt(totalAmount)) {
+            // Ödeme yapıldıysa
+            alert("Ödeme başarıyla gerçekleştirildi!");
+            // Ödeme durumunu ekranda göster
+            document.querySelector('.user-info p:last-of-type').textContent = "Durum: Ödendi";
+        } else {
+            // Ödeme yapılmadıysa
+            alert("Lütfen ödemenizi tam olarak yapın.");
+        }
+    }
+</script>
+
+</html>
