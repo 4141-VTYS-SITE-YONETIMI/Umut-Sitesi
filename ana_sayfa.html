@@ -118,19 +118,20 @@
 
 <script>
     function makePayment() {
-        var paymentAmount = document.getElementById("payment-amount").value;
-        var totalAmount = document.getElementById("total-amount").textContent;
+    var paymentAmount = document.getElementById("payment-amount").value;
+    var totalAmount = parseInt(document.getElementById("total-amount").textContent);
 
-        if (parseInt(paymentAmount) === parseInt(totalAmount)) {
-            // Ödeme yapıldıysa
-            alert("Ödeme başarıyla gerçekleştirildi!");
-            // Ödeme durumunu ekranda göster
-            document.querySelector('.user-info p:last-of-type').textContent = "Durum: Ödendi";
-        } else {
-            // Ödeme yapılmadıysa
-            alert("Lütfen ödemenizi tam olarak yapın.");
-        }
+    if (paymentAmount === totalAmount.toString()) {
+        alert("Ödeme başarıyla gerçekleştirildi!");
+        document.querySelector('.user-info p:last-of-type').textContent = "Durum: Ödendi";
+    } else {
+        alert("Lütfen ödemenizi tam olarak yapın.");
     }
+}
+
+// Ödeme butonuna tıklandığında makePayment fonksiyonunu çağır
+var paymentButton = document.querySelector("button");
+paymentButton.addEventListener("click", makePayment);
 </script>
 
 </html>
